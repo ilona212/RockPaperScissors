@@ -1,0 +1,78 @@
+1. <!DOCTYPE html>
+2. <html lang="en">
+3. <head>
+4.     <meta charset="UTF-8">
+5.     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+6.     <title>Rock Paper Scissors Game</title>
+7.     <style>
+8.         body {
+9.             text-align: center;
+10.            font-family: Arial, sans-serif;
+11.            margin-top: 50px;
+12.        }
+13.        button {
+14.            padding: 10px 20px;
+15.            margin: 10px;
+16.            font-size: 18px;
+17.            cursor: pointer;
+18.        }
+19.        #result {
+20.            font-size: 20px;
+21.            margin-top: 20px;
+22.            font-weight: bold;
+23.        }
+24.        #player-choice, #computer-choice {
+25.            margin-top: 20px;
+26.        }
+27.        img {
+28.            width: 100px;
+29.            height: 100px;
+30.            margin: 10px;
+31.        }
+32.    </style>
+33. </head>
+34. <body>
+35.     <h1>Rock, Paper, Scissors!</h1>
+36.     <p>Choose one:</p>
+37.     <button onclick="playGame('rock')">Rock</button>
+38.     <button onclick="playGame('paper')">Paper</button>
+39.     <button onclick="playGame('scissors')">Scissors</button>
+40.     <p id="result"></p>
+41.     <!-- Images for the player's choice -->
+42.     <div id="player-choice">
+43.         <h3>Your choice:</h3>
+44.         <img id="player-img" src="" alt="Your choice image">
+45.     </div>
+46.     <!-- Images for the computer's choice -->
+47.     <div id="computer-choice">
+48.         <h3>Computer's choice:</h3>
+49.         <img id="computer-img" src="" alt="Computer choice image">
+50.     </div>
+51.     <script>
+52.         function playGame(playerChoice) {
+53.             const choices = ["rock", "paper", "scissors"];
+54.             const computerChoice = choices[Math.floor(Math.random() * 3)];
+55.             const images = {
+56.                 "rock": "https://cdn-icons-png.flaticon.com/512/2977/2977285.png",
+57.                 "paper": "https://cdn-icons-png.flaticon.com/512/2977/2977287.png",
+58.                 "scissors": "https://cdn-icons-png.flaticon.com/512/2977/2977286.png"
+59.             };
+60.             let result = "";
+61.             if (playerChoice === computerChoice) {
+62.                 result = "It's a tie!";
+63.             } else if (
+64.                 (playerChoice === "rock" && computerChoice === "scissors") ||
+65.                 (playerChoice === "paper" && computerChoice === "rock") ||
+66.                 (playerChoice === "scissors" && computerChoice === "paper")
+67.             ) {
+68.                 result = "You win!";
+69.             } else {
+70.                 result = "You lose!";
+71.             }
+72.             document.getElementById("result").innerText = `You chose ${playerChoice}, computer chose ${computerChoice}. ${result}`;
+73.             document.getElementById("player-img").src = images[playerChoice];
+74.             document.getElementById("computer-img").src = images[computerChoice];
+75.         }
+76.     </script>
+77. </body>
+78. </html>
